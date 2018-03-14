@@ -235,11 +235,11 @@ quiz.question_11 = function(input) {
 
   var res = input.reduce(
    function(accumulator, currValue) {
-      
+      return accumulator+", "+currValue;
     },
-    '' /* TODO set correct starting value */,
+    '' /* TODO set correct starting value */
   );
-  return null;
+  return res;
 };
 
 quiz.question_12 = function(input) {
