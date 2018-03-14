@@ -40,7 +40,7 @@ quiz.question_02 = function() {
   //   Return an array of objects
   // ----------------------------------------
 
-  var arr = [1, 2, 3, 4];
+  var arr = [{}, {}, {}, {}];
   return arr;
 };
 
