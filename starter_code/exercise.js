@@ -225,9 +225,8 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
-    // TODO your code here
-    // add name as key, time as value
+  input.forEach(function(skier) {
+    obj[skier.name] = skier.time;
   });
   return obj;
 };
