@@ -37,7 +37,11 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  return [{index:0},
+    {index:1},
+    {index:2},
+    {index:3},
+    {index:4}];
 };
 
 quiz.question_03 = function() {
