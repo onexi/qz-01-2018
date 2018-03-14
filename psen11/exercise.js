@@ -159,7 +159,7 @@ quiz.question_09 = function(input) {
     const human = item.name;
     console.log(human);
     var time = item.time;
-    return obj.human = time ; 
+    return obj[human] = time ; 
   });
   return obj;
 };
