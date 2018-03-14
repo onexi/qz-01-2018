@@ -89,7 +89,7 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  someObject.age = 20;  
+  someObject['age'] = 20;  
   return someObject;
 };
 
@@ -150,7 +150,7 @@ quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
 
   // TODO your code here
-  data.cars.Honda = [
+  data.cars['Honda'] = [
     {model: "Civic", doors: 4, price: 18840}
   ];
 
@@ -178,7 +178,7 @@ quiz.question_09 = function(input) {
     // add name as key, time as value
     name = item.name;
     time = item.time;
-    obj = {name: time};
+    obj[name] = time;
   });
   return obj;
 };
@@ -195,11 +195,13 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
+    .filter(function(item) {
       // TODO your code here
+      return item.time<48.5;
     })
-    .map(function(/* TODO args */) {
+    .map(function(item) {
       // TODO your code here
+      return item.name;
     });
   return res;
 };
@@ -216,10 +218,11 @@ quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input.reduce(
-    function(/* TODO args */) {
+    function(previous, current) {
       // TODO your code here
+      return previous + ', ' + current;
     },
-    0 /* TODO set correct starting value */,
+    '',
   );
   return res;
 };
@@ -234,8 +237,11 @@ quiz.question_12 = function(input) {
   // Example output: [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
   // ---------------------------------------------------------------
 
-  var compare = function(/* TODO args */) {
+  var compare = function(a,b) {
     // TODO your code here
+    if (a.time < b.time) return -1;
+    if (a.time > b.time) return 1;
+    if (a.time === b.time) return 0;
   };
   return input.sort(compare);
 };
