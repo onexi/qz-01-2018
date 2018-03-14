@@ -224,7 +224,7 @@ quiz.question_11 = function(input) {
     },
     '',
   );
-  return res;
+  return res.substring(2);
 };
 
 quiz.question_12 = function(input) {

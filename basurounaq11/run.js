@@ -18,8 +18,8 @@ console.log(q3);
 var q4 = quiz.question_04();
 console.log(q4);
 
-// var q5 = quiz.question_05();
-// console.log(q5);
+var q5 = quiz.question_05({});
+console.log(q5);
 
 // ----------------------------------------
 //   OBJECTS
