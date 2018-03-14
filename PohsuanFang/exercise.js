@@ -20,8 +20,9 @@ quiz.question_00 = function() {
   //   Is "counter" a global variable?
   //   Return true or false.
   // ----------------------------------------
+  
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return false;
 };
 
 quiz.question_01 = function() {
@@ -29,7 +30,7 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return "Hi!";
 };
 
 quiz.question_02 = function() {
@@ -37,7 +38,7 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  return [{},{},{}];
 };
 
 quiz.question_03 = function() {
