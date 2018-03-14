@@ -247,8 +247,8 @@ quiz.question_12 = function(input) {
   // Example output: [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
   // ---------------------------------------------------------------
 
-  var compare = function(item) {
-    return a>b;
+  var compare = function(previous, current) {
+    return previous > current;
   };
   return input.sort(compare);
 };
