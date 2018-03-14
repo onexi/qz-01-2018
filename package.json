@@ -1,0 +1,23 @@
+{
+  "name": "qz-01-2018",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JinghongLyu/qz-01-2018.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JinghongLyu/qz-01-2018/issues"
+  },
+  "homepage": "https://github.com/JinghongLyu/qz-01-2018#readme",
+  "dependencies": {
+    "module_name": "^1.0.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}
