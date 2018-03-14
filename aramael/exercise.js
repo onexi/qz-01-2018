@@ -173,7 +173,6 @@ quiz.question_07 = function(data) {
                 make: car.make,
                 model: car.model,
                 doors: car.doors,
-                color: color.id,
                 price: car.price
               };
             }
@@ -186,7 +185,6 @@ quiz.question_07 = function(data) {
             make: carName,
             model: car.model,
             doors: car.doors,
-            color: 'not specified',
             price: car.price
           };
         }
