@@ -21,7 +21,7 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return false;
+  return true;
 };
 
 quiz.question_01 = function() {
