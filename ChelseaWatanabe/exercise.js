@@ -21,6 +21,7 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
+  return true;
   return 'Error: Question 01 not implemented';
 };
 
@@ -29,6 +30,7 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
+  return 'Hi!';
   return 'Error: Question 01 not implemented';
 };
 
@@ -37,6 +39,7 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
+  return [{},{},{}];
   return 'Error: Question 02 not implemented';
 };
 
@@ -47,6 +50,9 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
+  return [{name: "Mary", age: 18},
+          {name: "Jane", age: 19},
+          {name: "Bill", age:20}];
   return 'Error: Question 03 not implemented';
 };
 
@@ -56,6 +62,7 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
+  return {func, func1, func2};
   return 'Error: Question 04 not implemented';
 };
 
@@ -65,6 +72,7 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
+  return someObject.age = 5;
   return 'Error: Question 05 not implemented';
 };
 
@@ -81,9 +89,16 @@ quiz.question_06 = function(data, carName, model, doors, color) {
 
   var carPrice = 0;
   // TODO your code here
+  for(var i =0; i<car.length, i++){
+    if(data[i].carName === carName 
+    && data[i].model === model 
+    && data[i].doors === doors){
+
+    carPrice = data.carName.price;
+  }
 
   return carPrice;
-};
+});
 
 quiz.question_07 = function(data) {
   // ---------------------------------------------------------------
@@ -94,9 +109,14 @@ quiz.question_07 = function(data) {
 
   var maxPricedCar = {};
   // TODO your code here
-
+  maxPricedCar = data.filter(function(elem){
+    var current = 0;
+    for(var i =0; i< data.length, i++){
+      if(data[i].price > current){
+        current = data[i].price;
+      }
+  });
   return maxPricedCar;
-};
 
 quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
@@ -106,6 +126,7 @@ quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
 
   // TODO your code here
+  data.car = {model: "Civic", doors: 4, price: 188840};
 
   return data;
 };
@@ -126,10 +147,12 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
+  input.forEach(function(val, i, array) {
     // TODO your code here
     // add name as key, time as value
-  });
+    obj = input[val].name + ": " + input[val].time;
+
+  })
   return obj;
 };
 
@@ -145,11 +168,16 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
+    .filter(function(val) {
       // TODO your code here
+      if(input[val].time < 48.5){
+        res = input[val].time;
+      }
+    
     })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .map(function(val1) {
+      res = input[val1].name;
+
     });
   return res;
 };
@@ -166,8 +194,9 @@ quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input.reduce(
-    function(/* TODO args */) {
+    function(prev, cur) {
       // TODO your code here
+      return prev + ' ' + cur.name;
     },
     0 /* TODO set correct starting value */,
   );
