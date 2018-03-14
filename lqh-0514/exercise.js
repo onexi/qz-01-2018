@@ -21,7 +21,7 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return false;
 };
 
 quiz.question_01 = function() {
@@ -29,7 +29,7 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return "Hi!";
 };
 
 quiz.question_02 = function() {
@@ -37,7 +37,7 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  return [{firstName : 'peter parker', age : 19},{firstName : 'bruce wayne', age : 18},{firstName : 'clark kent', age : 20}];
 };
 
 quiz.question_03 = function() {
@@ -47,7 +47,7 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  return [{firstName : 'peter parker', age : 19},{firstName : 'bruce wayne', age : 18},{firstName : 'clark kent', age : 20}];
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,7 +56,10 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  a = function(a,b){
+    return a+b
+  }
+  return {sum:a};
 };
 
 quiz.question_05 = function(someObject) {
@@ -65,7 +68,7 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+  return someObject.age = 25;
 };
 
 // ----------------------------------------
@@ -80,7 +83,18 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   // ---------------------------------------------------------------
 
   var carPrice = 0;
-  // TODO your code here
+  var len = carData.cars.length;
+  for (var i = 0; i < len;i++){
+    if (i ==carName){
+      for(var obj in i){
+        if (obj.model === model && obj.doors == doors && obj.color == color){
+          carPrice = obj.price
+        }
+      }
+    }
+   
+  }
+  
 
   return carPrice;
 };
@@ -93,6 +107,19 @@ quiz.question_07 = function(data) {
   // ---------------------------------------------------------------
 
   var maxPricedCar = {};
+  var sum = 0;
+  var len = carData.cars.length;
+  for (var i = 0; i < len;i++){
+    for (var obj in i){
+      if(obj.price > sum){
+        sum = obj.price
+        maxPricedcar = obj
+      }
+    }
+  
+  }
+
+
   // TODO your code here
 
   return maxPricedCar;
@@ -106,6 +133,9 @@ quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
 
   // TODO your code here
+  var newjson = {"model":"Juke", "doors":2,  "price": 20900};
+  data.cars.push('Honda')
+  data.cars.Honda.push(JSON.parse(newjson));
 
   return data;
 };
@@ -126,9 +156,10 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
-    // TODO your code here
-    // add name as key, time as value
+  input.forEach(function(input) {
+    name = input.name
+    time = input.time
+    obj = {name:time}
   });
   return obj;
 };
@@ -145,11 +176,12 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
-      // TODO your code here
+  
+    .filter(function(input) {
+      return item.time>48.5
     })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .map(function(item) {
+     return item.name
     });
   return res;
 };
@@ -166,8 +198,8 @@ quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input.reduce(
-    function(/* TODO args */) {
-      // TODO your code here
+    function(previous,current) {
+      previous+stringify(current)
     },
     0 /* TODO set correct starting value */,
   );
