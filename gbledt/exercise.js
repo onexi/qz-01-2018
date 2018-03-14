@@ -205,7 +205,7 @@ quiz.question_10 = function (input) {
       return inp.time < 48.5;
     })
     .map(function (currVal) {
-      return currVal;
+      return currVal.name;
     });
   return res;
 };
