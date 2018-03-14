@@ -21,7 +21,7 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return false;
 };
 
 quiz.question_01 = function() {
@@ -29,7 +29,8 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  var hi = 'Hi!'
+  return hi;
 };
 
 quiz.question_02 = function() {
@@ -37,7 +38,12 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  var arrObj = [
+    {name: 'peter', age: 18},
+    {name: 'bruce', age: 21},
+    {name: 'clark', age: 25}
+  ];
+  return arrObj;
 };
 
 quiz.question_03 = function() {
@@ -47,7 +53,12 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  var arrObj = [
+    {name: 'peter', age: 18},
+    {name: 'bruce', age: 21},
+    {name: 'clark', age: 25}
+  ];
+  return arrObj;
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,7 +67,20 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  var math = {
+    add: null,
+    subtract: null
+  };
+  
+  math.add = function(a,b){
+    return a+b;
+  };
+  
+  math.subtract = function(a,b){
+    return a-b;
+  };
+  
+  return math;
 };
 
 quiz.question_05 = function(someObject) {
@@ -65,7 +89,8 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+  someObject.age = 20;  
+  return someObject;
 };
 
 // ----------------------------------------
@@ -81,6 +106,16 @@ quiz.question_06 = function(data, carName, model, doors, color) {
 
   var carPrice = 0;
   // TODO your code here
+  var specificCar = data.cars[carName];
+  for (i=0; i<specificCar.length; i++){
+    if ((model == specificCar[i].model) && (doors = specificCar[i].doors)){
+      for (var j=0; j<specificCar[i].color.length; j++){
+        if (color === specificCar[i].color[j]){
+          carPrice = specificCar[i].price;
+        }  
+      }
+    }
+  }
 
   return carPrice;
 };
