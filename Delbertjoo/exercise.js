@@ -21,7 +21,7 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return 'false';
 };
 
 quiz.question_01 = function() {
@@ -29,7 +29,7 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return 'Hi!';
 };
 
 quiz.question_02 = function() {
@@ -37,7 +37,7 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  return [{}, {}, {}, {}, {}];
 };
 
 quiz.question_03 = function() {
@@ -47,7 +47,13 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  var q3 = [
+    {name:'peter', age:18},
+    {name:'bruce', age:22},
+    {name:'clark', age:25},
+    {name:'diana', age:29}
+];
+  return q3;
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,7 +62,11 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  var q4 = {property: sayHello = function(){
+      return "Hello";
+  }};
+
+  return q4;
 };
 
 quiz.question_05 = function(someObject) {
@@ -65,7 +75,11 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+  var someObject = {};
+
+  someObject.age = 32;
+ 
+    return someObject;
 };
 
 // ----------------------------------------
@@ -78,11 +92,13 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   // as arguments to this function.
   // Return the price.
   // ---------------------------------------------------------------
+//   var q6 = quiz.question_06(carData, 'BMW', 'series 3', 4 , 'red');
+  
+//   var carPrice = 0;
+//   // TODO your code here
 
-  var carPrice = 0;
-  // TODO your code here
 
-  return carPrice;
+//   return carPrice;
 };
 
 quiz.question_07 = function(data) {
@@ -90,7 +106,7 @@ quiz.question_07 = function(data) {
   // Find the maximum priced car from the data given in cardata variable
   // Return an object with properties: make, model, doors, price
   // ex: '{ make: 'Tesla', model: 'Model S', doors: 4, price: 80000 }'
-  // ---------------------------------------------------------------
+//   // ---------------------------------------------------------------
 
   var maxPricedCar = {};
   // TODO your code here
@@ -106,6 +122,42 @@ quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
 
   // TODO your code here
+  var carData= {
+    "cars": {
+        "Nissan": [
+            {"model":"Sentra", "doors":4, "price": 17000},
+            {"model":"Maxima", "doors":4,  "price": 18000},
+            {"model":"GTR", "doors":2,  "price": 210000},
+            {"model":"Altima", "doors":2,  "price": 23300},
+            {"model":"LEAF", "doors":2,  "price": 29900},
+            {"model":"Maxima", "doors":2,  "price": 33270},
+            {"model":"Versa", "doors":2,  "price": 12110},
+            {"model":"Juke", "doors":2,  "price": 20900}
+        ],
+        "Ford": [
+            {"model":"Taurus", "doors":4, "price": 21000},
+            {"model":"Escort", "doors":4,  "price": 22000},
+            {"model":"Expedition", "doors":4,  "price": 64447},
+            {"model":"Fusion", "doors":4,  "price": 24000},
+            {"model":"Fiesta ", "doors":4,  "price": 13995},
+            {"model":"EcoSport ", "doors":4,  "price": 20995},
+            {"model":"Edge ", "doors":4,  "price": 30215},
+            {"model":"Explorer ", "doors":4,  "price": 32985}
+        ],
+
+        "BMW": [
+            {"model":"series 3", "doors":4, 
+                "color":[ 
+                {"id":"red", "price": 35000 },
+                {"id":"silver", "price": 40000 }]
+            }
+        ]
+    }
+};
+  data = carData;
+  var Honda = [{"model":"Civic", "doors":4, "price": 18840}]
+
+  carData.cars.Honda = Honda;
 
   return data;
 };
@@ -126,9 +178,11 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
+  input.forEach(function(item) {
     // TODO your code here
     // add name as key, time as value
+    var result = item.name;
+    obj.name = result;
   });
   return obj;
 };
@@ -143,13 +197,13 @@ quiz.question_10 = function(input) {
   // Example input: [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
   // Example output: ['Bob']
   // ---------------------------------------------------------------
-
+  var time = 48.5;
   var res = input
-    .filter(function(/* TODO args */) {
-      // TODO your code here
+    .filter(function(item) {
+        return time > Number(item.time);
     })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .map(function(array) {
+        return(array.name);
     });
   return res;
 };
@@ -166,11 +220,8 @@ quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input.reduce(
-    function(/* TODO args */) {
-      // TODO your code here
-    },
-    0 /* TODO set correct starting value */,
-  );
+    function(previous, current) {
+    return previous + ', ' + current});
   return res;
 };
 
