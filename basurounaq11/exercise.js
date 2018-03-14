@@ -109,10 +109,17 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   var specificCar = data.cars[carName];
   for (i=0; i<specificCar.length; i++){
     if ((model == specificCar[i].model) && (doors = specificCar[i].doors)){
-      for (var j=0; j<specificCar[i].color.length; j++){
-        if (color === specificCar[i].color[j].id){
-          carPrice = specificCar[i].color[j].price;
-        }  
+      if (specificCar[i].color.length > 0){
+        for (var j=0; j<specificCar[i].color.length; j++){
+          if (color === specificCar[i].color[j].id){
+            carPrice = specificCar[i].color[j].price;
+          }  
+        }
+      }
+      else{
+        if (color === specificCar[i].color){
+          carPrice = specificCar[i].price;
+        }
       }
     }
   }
@@ -132,10 +139,24 @@ quiz.question_07 = function(data) {
   // TODO your code here
   var specificCar = data.cars[carName];
   for (i=0; i<specificCar.length; i++){
+    if (specificCar[i].color.length > 0){
+      for (var j=0; j<specificCar[i].color.length; j++){
+        carPrice = specificCar[i].color[j].price;
+        if (carPrice > maxCarPrice){
+          maxCarPrice = carPrice;
+          maxPricedCar = specificCar[i];
+          maxPricedCar.color = specificCar[i].color[j];
+        }  
+      }
+    }
+    
+    else{
       carPrice = specificCar[i].price;
-      if (carPrice > maxCarPrice){
-        maxCarPrice = carPrice;
-        maxPricedCar = specificCar[i];
+    }  
+    
+    if (carPrice > maxCarPrice){
+      maxCarPrice = carPrice;
+      maxPricedCar = specificCar[i];
     }
   }
 
