@@ -110,8 +110,8 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   for (i=0; i<specificCar.length; i++){
     if ((model == specificCar[i].model) && (doors = specificCar[i].doors)){
       for (var j=0; j<specificCar[i].color.length; j++){
-        if (color === specificCar[i].color[j]){
-          carPrice = specificCar[i].price;
+        if (color === specificCar[i].color[j].id){
+          carPrice = specificCar[i].color[j].price;
         }  
       }
     }
@@ -128,7 +128,16 @@ quiz.question_07 = function(data) {
   // ---------------------------------------------------------------
 
   var maxPricedCar = {};
+  var maxCarPrice = 0;
   // TODO your code here
+  var specificCar = data.cars[carName];
+  for (i=0; i<specificCar.length; i++){
+      carPrice = specificCar[i].price;
+      if (carPrice > maxCarPrice){
+        maxCarPrice = carPrice;
+        maxPricedCar = specificCar[i];
+    }
+  }
 
   return maxPricedCar;
 };
@@ -141,6 +150,9 @@ quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
 
   // TODO your code here
+  data.cars.Honda = [
+    {model: "Civic", doors: 4, price: 18840}
+  ];
 
   return data;
 };
@@ -161,9 +173,12 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
+  input.forEach(function(item, index, array) {
     // TODO your code here
     // add name as key, time as value
+    name = item.name;
+    time = item.time;
+    obj = {name: time};
   });
   return obj;
 };
