@@ -51,8 +51,8 @@ var carData= {
         ],
 
         "BMW": [
-            {"model":"series 3", "doors":4, 
-                "color":[ 
+            {"model":"series 3", "doors":4,
+                "color":[
                 {"id":"red", "price": 35000 },
                 {"id":"silver", "price": 40000 }]
             }
