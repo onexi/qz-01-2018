@@ -21,7 +21,8 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+
+  return false;
 };
 
 quiz.question_01 = function() {
@@ -29,7 +30,8 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+
+  return "Hi!";
 };
 
 quiz.question_02 = function() {
@@ -37,7 +39,9 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+
+  var arr = [1, 2, 3, 4];
+  return arr;
 };
 
 quiz.question_03 = function() {
@@ -47,7 +51,14 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+
+  var arr = [
+    {name: 'Cristiano',
+    age: 'Ronaldo'},
+    {name: 'Lionel',
+    age: 'Messi'},
+  ];
+  return arr;
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,7 +67,18 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+
+  var a = function com(){
+    return '1';
+  };
+  var b = function bom(){
+    return '1';
+  };
+  var obj = {
+    func1: a,
+    func2: b
+  };
+  return obj;
 };
 
 quiz.question_05 = function(someObject) {
@@ -65,7 +87,11 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+
+   someObject = {};
+   someObject.age = 18;
+
+  return someObject.age;
 };
 
 // ----------------------------------------
@@ -81,6 +107,17 @@ quiz.question_06 = function(data, carName, model, doors, color) {
 
   var carPrice = 0;
   // TODO your code here
+  var colour = color;
+  carDetails = data.cars[carName];
+  if (carDetails[0].color){
+    for (var i=0; i<carDetails[0].color.length; i++){
+      console.log(carDetails[0].color[i]);
+
+      
+    }
+  }
+  
+
 
   return carPrice;
 };
@@ -95,6 +132,8 @@ quiz.question_07 = function(data) {
   var maxPricedCar = {};
   // TODO your code here
 
+
+
   return maxPricedCar;
 };
 
@@ -104,6 +143,12 @@ quiz.question_08 = function(data) {
   // model: "Civic", doors: 4, price: 18840
   // Return the updated data
   // ---------------------------------------------------------------
+
+  data.cars['Honda'] = [{
+    'model': 'Civic',
+    'doors': 4,
+    'price': 18840
+  }]
 
   // TODO your code here
 
@@ -126,9 +171,10 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
+  input.forEach(function(skier) {
     // TODO your code here
     // add name as key, time as value
+    obj[skier.name] = skier.time;
   });
   return obj;
 };
@@ -145,12 +191,25 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
+    .filter(function(skier) {
+      if (skier.time < 48.5){
+        return true;
+      }
       // TODO your code here
     })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .map(function(skier) {
+      return JSON.stringify(skier.name)
     });
+
+  // var res = quiz.question_09(input);
+
+  // var filtered = res.filter(lessThan);
+  // function lessThan(skier){
+  //   if (skier.time < 48.5){
+  //     return 1;
+  //   }
+  // }
+  
   return res;
 };
 
@@ -166,10 +225,16 @@ quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input.reduce(
-    function(/* TODO args */) {
-      // TODO your code here
+    function(prev, curr) {
+      if (prev){
+        prev += ', ' + curr;
+      return prev;
+      }
+      else {
+        return input[0];
+      }
     },
-    0 /* TODO set correct starting value */,
+    '',
   );
   return res;
 };
@@ -184,7 +249,8 @@ quiz.question_12 = function(input) {
   // Example output: [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
   // ---------------------------------------------------------------
 
-  var compare = function(/* TODO args */) {
+  var compare = function(a, b) {
+    return b.time - a.time;
     // TODO your code here
   };
   return input.sort(compare);
