@@ -21,7 +21,9 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  //return 'Error: Question 01 not implemented';
+
+  return true;
 };
 
 quiz.question_01 = function() {
@@ -29,7 +31,9 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  //return 'Error: Question 01 not implemented';
+
+  return 'Hi';
 };
 
 quiz.question_02 = function() {
@@ -37,7 +41,11 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  //return 'Error: Question 02 not implemented';
+
+  // returning an empty array of 4 objects
+
+  return [{}, {}, {}, {}];
 };
 
 quiz.question_03 = function() {
@@ -47,7 +55,10 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  //return 'Error: Question 03 not implemented';
+  // returning an array of 4 objects
+
+  return [{name: 'Peter', age: 21}, {name: 'Bruce', age: 22}, {name: 'Sam', age: 20}, {name: 'Bryan', age: 34}];
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,7 +67,20 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  //return 'Error: Question 04 not implemented';
+  var funcObject = {add: null, subtract: null};
+
+  funcObject.add = function(a,b){
+    return a+b;
+  };
+  
+  // assign function to subtract property
+  funcObject.subtract = function(a,b){
+    return a-b;
+  };
+
+  return funcObject;  
+
 };
 
 quiz.question_05 = function(someObject) {
@@ -65,7 +89,10 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+  //return 'Error: Question 05 not implemented';
+  someObject = {};
+  someObject.age = 20;
+  return someObject;
 };
 
 // ----------------------------------------
@@ -81,6 +108,18 @@ quiz.question_06 = function(data, carName, model, doors, color) {
 
   var carPrice = 0;
   // TODO your code here
+
+  var carName = data.cars[carName];
+  var car = carName.forEach(function(element, index, array){
+     if (element.model === model && element.doors === doors)
+      return element;
+  }); 
+
+
+  /*console.log('model', carName);
+  console.log('car', car);*/
+
+  //console.log('finalcar', finalCar);
 
   return carPrice;
 };
@@ -106,7 +145,8 @@ quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
 
   // TODO your code here
-
+  var newObject = {model: "Civic", doors: 4, price: 18840}; 
+  data.Honda = newObject;
   return data;
 };
 
@@ -126,9 +166,13 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
+  input.forEach(function(element, index, array) {
     // TODO your code here
     // add name as key, time as value
+
+    var property = element.name; 
+    var value = element.time; 
+    obj[property] = value; 
   });
   return obj;
 };
@@ -145,11 +189,11 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
-      // TODO your code here
+    .filter(function(element) {
+      return element.time < 48.5;
     })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .map(function(value) {
+      return value.name;
     });
   return res;
 };
@@ -166,10 +210,16 @@ quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input.reduce(
-    function(/* TODO args */) {
-      // TODO your code here
+    function(previous, current) {
+
+      if (previous === "") {
+        return previous = previous + current;
+         
+      }
+      else {
+        return previous = previous + ", " + current;}
     },
-    0 /* TODO set correct starting value */,
+    ""/* TODO set correct starting value */,
   );
   return res;
 };
@@ -184,8 +234,9 @@ quiz.question_12 = function(input) {
   // Example output: [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
   // ---------------------------------------------------------------
 
-  var compare = function(/* TODO args */) {
+  var compare = function(a, b) {
     // TODO your code here
+    return b.time - a.time; 
   };
   return input.sort(compare);
 };
