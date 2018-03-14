@@ -112,7 +112,39 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   // ---------------------------------------------------------------
 
   var carPrice = 0;
-  // TODO your code here
+
+  // Check Car Name Exists
+  if (!(carName in data.cars) || (typeof data.cars[carName] == 'undefined')){
+    throw new Error(`No car name exists with name '${carName}'.`);
+  }else {
+    // Find All Matching Models
+    let matchingModels = data.cars[carName].filter(datum => (datum.model == model));
+    if (matchingModels.length == 0){
+      throw new Error(`No model exists with model '${model}' and name'${carName}'.`);
+    }else {
+      // Find All Matching Doors
+      let matchingDoors = matchingModels.filter(datum => (datum.doors == doors));
+      if (matchingDoors.length == 0){
+        throw new Error(`No model exists with ${doors} doors and model '${model}' and name'${carName}'.`);
+      }else {
+        // No Color Options Asked For
+        if (typeof color === 'undefined' || color === null) {
+          carPrice = matchingDoors[0].price;
+        }else {
+          if (!("color" in matchingDoors[0]) || (typeof matchingDoors[0].color == 'undefined')){
+            throw new Error(`No color options exist for ${doors} doors and model '${model}' and name'${carName}'.`);
+          }else {
+            let matchingColors = matchingDoors[0].color.filter(datum => (datum.id == color));
+            if (matchingColors.length == 0){
+              throw new Error(`No model exists with color '${color}' and ${doors} doors and model '${model}' and name'${carName}'.`);
+            }else{
+              carPrice = matchingColors[0].price;
+            }
+          }
+        }
+      }
+    }
+  }
 
   return carPrice;
 };
