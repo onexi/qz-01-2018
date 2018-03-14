@@ -263,12 +263,17 @@ quiz.question_11 = function(input) {
   // Eample output: 'Bob, Sue'
   // ---------------------------------------------------------------
 
+  // A Faster Implementation if usage of reduce is not required.
+  // return input.join(', ');
+
   var res = input.reduce(
-    function(/* TODO args */) {
-      // TODO your code here
+    function(acc, curr) {
+      acc += curr + ', ';
+      return acc;
     },
-    0 /* TODO set correct starting value */,
-  );
+    '');
+
+  res = res.substring(0, res.length - 2);
   return res;
 };
 
