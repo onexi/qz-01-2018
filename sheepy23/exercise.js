@@ -201,9 +201,7 @@ quiz.question_11 = function(input) {
   var res = input.reduce(
     function(previous,current) {
       return previous.push(current);
-    },
-    '',
-  );
+    },'');
   return res;
 };
 
