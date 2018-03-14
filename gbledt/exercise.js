@@ -106,7 +106,6 @@ quiz.question_06 = function (data, carName, model, doors, color) {
       }
     }
   }
-  console.log(carsColor);
 
 
   return carPrice;
