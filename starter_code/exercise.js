@@ -156,8 +156,43 @@ quiz.question_07 = function(data) {
   // ex: '{ make: 'Tesla', model: 'Model S', doors: 4, price: 80000 }'
   // ---------------------------------------------------------------
 
-  var maxPricedCar = {};
-  // TODO your code here
+  var maxPricedCar = {price:0,};
+
+  Object.keys(data.cars).forEach(cars =>{
+    let carName = cars;
+    cars = data.cars[cars];
+    cars.forEach(car =>{
+      // Check if Price is on Element
+      if (!('price' in car) || (typeof car.price == 'undefined')){
+        if (!('color' in car) || (typeof car.color == 'undefined')){
+          throw new Error(`Neither 'color' nor 'price' keys are set, unable to ensure maximum price properly. Please verify data format.`);
+        }else{
+          car.color.forEach(color =>{
+            if (color.price > maxPricedCar.price){
+              maxPricedCar = {
+                make: car.make,
+                model: car.model,
+                doors: car.doors,
+                color: color.id,
+                price: car.price
+              };
+            }
+          });
+        }
+      }else{
+        // Price is on Root Element
+        if (car.price > maxPricedCar.price){
+          maxPricedCar = {
+            make: carName,
+            model: car.model,
+            doors: car.doors,
+            color: 'not specified',
+            price: car.price
+          };
+        }
+      }
+    })
+  });
 
   return maxPricedCar;
 };
