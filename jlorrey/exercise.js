@@ -62,7 +62,7 @@ quiz.question_04 = function(foo, bar) {
   var greeting2 = function(){
     console.log("Heyo");
   };
-  return {firstGreeting: greeting1(), secondGreeting: greeting2()};
+  return {firstGreeting: greeting1, secondGreeting: greeting2};
 };
 
 quiz.question_05 = function(someObject) {
@@ -71,7 +71,7 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return someObject.age = 24;
+  return someObject.age = 24; //test this out with a real object
 };
 
 // ----------------------------------------
@@ -86,7 +86,7 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   // ---------------------------------------------------------------
 
   var carPrice = 0;
-  carPrice = data.carName.model.doors.price; //come back to this!!
+  carPrice = data.cars.carName.model.doors.price; //come back to this!!
 
   return carPrice;
 };
@@ -99,8 +99,14 @@ quiz.question_07 = function(data) {
   // ---------------------------------------------------------------
 
   var maxPricedCar = {};
-  // TODO your code here
-
+  var carNames = ["Nissan", "Ford", "BMW"];
+  carNames.forEach(function(nameOfCar) {
+    data.cars.nameOfCar.forEach(function(specificCar) {
+      if (specificCar.price > maxPricedCar.price) {
+        maxPricedCar = specificCar;
+      }
+    });
+  });
   return maxPricedCar;
 };
 
@@ -110,9 +116,7 @@ quiz.question_08 = function(data) {
   // model: "Civic", doors: 4, price: 18840
   // Return the updated data
   // ---------------------------------------------------------------
-
-  // TODO your code here
-
+  data.cars.Honda = {"model": "Civic", "doors": 4, "price": 18840};
   return data;
 };
 
@@ -132,9 +136,10 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
+  input.forEach(function(skierStats) {
     // TODO your code here
     // add name as key, time as value
+    obj[skierStats.name] = skierStats.time;
   });
   return obj;
 };
@@ -151,11 +156,11 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
-      // TODO your code here
+    .filter(function(skierStats) { //filters the input to return only skierStats with time < 48.5
+      return skierStats.time < 48.5;
     })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .map(function(topSkierStats) { //maps filtered skierStats (topSkierStats) to array of skierNames
+      return topSkierStats.name;
     });
   return res;
 };
@@ -172,10 +177,12 @@ quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input.reduce(
-    function(/* TODO args */) {
+    function(acc, curr) {
       // TODO your code here
+      acc += curr
+      acc += ", " //won't work for the last value though (better way would be to use join)
     },
-    0 /* TODO set correct starting value */,
+    '' /* TODO set correct starting value */,
   );
   return res;
 };
@@ -189,10 +196,11 @@ quiz.question_12 = function(input) {
   // Example input: [{ name: 'Sue', time: 50.0 }, { name: 'Bob', time: 45.0 }]
   // Example output: [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
   // ---------------------------------------------------------------
+  
+  var compare = function(a,b) {} //sorting function
+    return a.time - b.time;
+    };
 
-  var compare = function(/* TODO args */) {
-    // TODO your code here
-  };
   return input.sort(compare);
 };
 
