@@ -76,7 +76,17 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  return {
+    foo: function (){
+      return "foo";
+    },
+    bar: function (){
+      return "bar";
+    },
+    buzz: function (){
+      return "buzz";
+    }
+  };
 };
 
 quiz.question_05 = function(someObject) {
