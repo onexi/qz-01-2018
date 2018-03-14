@@ -117,6 +117,7 @@ quiz.question_07 = function(data) {
   // ex: '{ make: 'Tesla', model: 'Model S', doors: 4, price: 80000 }'
   // ---------------------------------------------------------------
 
+  //go through the data and keep tabs of the max price, for every car that exceeds it , reset
   var maxPricedCar = {};
   // TODO your code here
 
