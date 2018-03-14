@@ -21,7 +21,7 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return false;
 };
 
 quiz.question_01 = function() {
@@ -29,7 +29,7 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return "Hi!";
 };
 
 quiz.question_02 = function() {
@@ -37,7 +37,11 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  var arrayOfObjects = [{'foo':'bar'},
+                        {'name':'raj'},
+                        {'classCode':'1.001'}
+                       ];
+  return arrayOfObjects;
 };
 
 quiz.question_03 = function() {
@@ -47,7 +51,11 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  var arrayOfObjects = [{'name':'Raj','age':26},
+                        {'name':'sri','age':25},
+                        {'name':'kiddo','age':1}
+  ]
+  return arrayOfObjects;
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,7 +64,17 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  //ToDo: Check if value or both is function
+  var function1 = function() {
+    return "I am function 1";
+  }
+  var function2 = function() {
+    return "I am function 2";
+  }
+  var objectTOreturn = {'function1':function1,
+                        'function2':function2
+                       }
+  return objectTOreturn;
 };
 
 quiz.question_05 = function(someObject) {
@@ -65,7 +83,8 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+  var ageToAdd = 40;
+  someObject.age = ageToAdd;
 };
 
 // ----------------------------------------
@@ -78,19 +97,65 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   // as arguments to this function.
   // Return the price.
   // ---------------------------------------------------------------
-
+  console.log(data);
+  console.log(carName);
   var carPrice = 0;
   // TODO your code here
+    var modelsArray = data.cars[carName];
+    var filterModel = function(element, i, array) {
+      return element.model == model;
+    }
+    var specificModels = modelsArray.filter(filterModel);
+    var filterByDoors = function(element) {
+      return element.doors == doors;
+    }
 
-  return carPrice;
+    var doorFilteredModels = specificModels.filter(filterByDoors);
+
+    var priceOfColor = null;
+    var getPricebyColor = function(element, i, array) {
+      if (element.id == color) {
+        priceOfColor = element.price;
+      }
+    }
+    console.log(doorFilteredModels);
+    console.log(doorFilteredModels[0].color);
+    // FIlter by colors if BMW
+    if (carName == 'BMW') {
+      var price = doorFilteredModels[0].color.forEach(getPricebyColor)
+    }
+
+    console.log('PRICE IS '+priceOfColor);
+    if (priceOfColor) {
+      return priceOfColor
+    }
+    else {
+      console.log('The given color was not found');
+    }
+    return null; // if it reaches here for return, it's an unhandled case
+    // ---------------------------------------------------------------
+    // Find the price of the car whose name, model, and doors are provided
+    // as arguments to this function.
+    // Return the price.
+    // ---------------------------------------------------------------
 };
-
+/*cleanedBMWObject = function(data) {
+  //Pick the BMW element alone
+  var bmwCars = data.cars.BMW;
+  var newBMWObjects = []
+  var addColorToBase = function(element, i, array) {
+    element.forEach(addColorPrice)
+  }
+  bmwCars.forEach(addColorToBase)
+}
+tempBMWObject = cleanedBMWObject(data); */
 quiz.question_07 = function(data) {
   // ---------------------------------------------------------------
   // Find the maximum priced car from the data given in cardata variable
   // Return an object with properties: make, model, doors, price
   // ex: '{ make: 'Tesla', model: 'Model S', doors: 4, price: 80000 }'
   // ---------------------------------------------------------------
+  // ToDO: Come back for this
 
   var maxPricedCar = {};
   // TODO your code here
@@ -106,7 +171,9 @@ quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
 
   // TODO your code here
-
+  data.cars.Honda = []
+  data.cars.Honda.push({'model':'Civic','doors':4,"price":18840});
+  console.log(data);
   return data;
 };
 
@@ -126,9 +193,10 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
+  input.forEach(function(element, index, array) {
     // TODO your code here
     // add name as key, time as value
+    obj[element.name] = element.time;
   });
   return obj;
 };
@@ -145,11 +213,11 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
-      // TODO your code here
+    .filter(function(elem, index, array) {
+      return elem.time > 48.5;
     })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .map(function(elem, index, array) {
+      return elem.name;
     });
   return res;
 };
@@ -166,12 +234,12 @@ quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input.reduce(
-    function(/* TODO args */) {
-      // TODO your code here
+   function(accumulator, currValue) {
+      
     },
-    0 /* TODO set correct starting value */,
+    '' /* TODO set correct starting value */,
   );
-  return res;
+  return null;
 };
 
 quiz.question_12 = function(input) {
