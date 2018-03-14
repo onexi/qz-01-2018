@@ -51,7 +51,23 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  return [
+    {
+      name:"Nancy B. Baker",
+      age: 30
+    },{
+      name:"Phyllis B. Hedges",
+      age: 73
+    },{
+      name:"Melanie L. Watson",
+      age: 52
+    },{
+      name:"Kevin R. Kelley",
+      age: 38
+    },{
+      name:"Harry B. Levan",
+      age: 49
+    },];
 };
 
 quiz.question_04 = function(foo, bar) {
