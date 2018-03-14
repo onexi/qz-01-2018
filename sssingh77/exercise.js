@@ -248,7 +248,7 @@ quiz.question_12 = function(input) {
   // ---------------------------------------------------------------
 
   var compare = function(previous, current) {
-    return previous > current;
+    return previous.time > current.time;
   };
   return input.sort(compare);
 };
