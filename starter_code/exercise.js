@@ -95,7 +95,9 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+
+  someObject.age = 38;  // set property `age` to 38
+  return someObject;
 };
 
 // ----------------------------------------
