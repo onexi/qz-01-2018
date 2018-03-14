@@ -60,8 +60,12 @@ var carData= {
     }
 };
 
+try {
 var q6 = quiz.question_06(carData, 'BMW', 'series 3', 4 , 'red');
 console.log(q6);
+}catch(error){
+  console.log(error);
+}
 
 var q7 = quiz.question_07(carData);
 console.log(q7);
