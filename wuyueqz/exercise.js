@@ -15,57 +15,32 @@ var quiz = {};
 // ----------------------------------------
 
 quiz.question_00 = function() {
-  // ----------------------------------------
-  //   QUESTION 00
-  //   Is "counter" a global variable?
-  //   Return true or false.
-  // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return false;
 };
 
 quiz.question_01 = function() {
-  // ----------------------------------------
-  //   QUESTION 01
-  //   Return a string that says "Hi!"
-  // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return 'Hi!';
 };
 
 quiz.question_02 = function() {
-  // ----------------------------------------
-  //   QUESTION 02
-  //   Return an array of objects
-  // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  return [1,2,3,4];
 };
 
 quiz.question_03 = function() {
-  // ----------------------------------------
-  //   QUESTION 03
-  //   Return an array of objects.
-  //   Each object needs to have
-  //   a 'name' and 'age' property
-  // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  return [{name: 'Peter', age: 18},
+          {name: 'Paul', age: 22},
+          {name: 'Helena', age: 24}];
 };
 
 quiz.question_04 = function(foo, bar) {
-  // ----------------------------------------
-  //   QUESTION 04
-  //   Return an object,
-  //   each object property value must be a function
-  // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  return {function(foo, bar){
+    }
+  };
 };
 
 quiz.question_05 = function(someObject) {
-  // ----------------------------------------
-  //   QUESTION 05
-  //   Add the property 'age' to someObject
-  //   Give 'age' any value you like.
-  // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+  return someObject.age = 24;
 };
 
 // ----------------------------------------
@@ -73,15 +48,11 @@ quiz.question_05 = function(someObject) {
 // ----------------------------------------
 
 quiz.question_06 = function(data, carName, model, doors, color) {
-  // ---------------------------------------------------------------
-  // Find the price of the car whose name, model, and doors are provided
-  // as arguments to this function.
-  // Return the price.
-  // ---------------------------------------------------------------
-
   var carPrice = 0;
-  // TODO your code here
-
+  for (var i = 0; i < carData.carName.length; i++)
+      if (color = true){
+      carPrice =  carData.carName[i].price
+    };
   return carPrice;
 };
 
@@ -93,8 +64,10 @@ quiz.question_07 = function(data) {
   // ---------------------------------------------------------------
 
   var maxPricedCar = {};
-  // TODO your code here
-
+  for (var i = 0; i < carData.carName.length; i++){
+    return carData.carName.sort(function(a,b){return b-a;});
+  };
+  maxPricedCar = carData.sort[0];
   return maxPricedCar;
 };
 
@@ -104,9 +77,9 @@ quiz.question_08 = function(data) {
   // model: "Civic", doors: 4, price: 18840
   // Return the updated data
   // ---------------------------------------------------------------
-
-  // TODO your code here
-
+  
+  var data = Cardata.cars.Honda[{"model":"Civic", "doors":4, "price":18840}]; 
+  
   return data;
 };
 
@@ -126,9 +99,8 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
-    // TODO your code here
-    // add name as key, time as value
+  input.forEach(function(item) {
+    obj.push = {item.name, ":" item.time};
   });
   return obj;
 };
@@ -185,7 +157,8 @@ quiz.question_12 = function(input) {
   // ---------------------------------------------------------------
 
   var compare = function(/* TODO args */) {
-    // TODO your code here
+    for (i = 0; i < input.length; i++){
+      if input[i] // TODO your code here
   };
   return input.sort(compare);
 };
