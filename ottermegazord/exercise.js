@@ -107,16 +107,31 @@ quiz.question_06 = function(data, carName, model, doors, color) {
 
   var carPrice = 0;
   // TODO your code here
-  var colour = color;
-  carDetails = data.cars[carName];
-  if (carDetails[0].color){
-    for (var i=0; i<carDetails[0].color.length; i++){
-      console.log(carDetails[0].color[i]);
+  var carTarget = data.cars[carName];
 
-      
+  for (var i=0; i<carTarget.length; i++){
+
+    //look at cars and doors
+    if ((model == carTarget[i].model) && (doors == carTarget[i].doors)){
+      // loop through car length
+
+      // for BMW
+      if (carTarget[i].color.length > 0){
+        for (var j=0; j<carTarget[i].color.length; j++){
+
+          //check for ID
+          if (color == carTarget[i].color[j].id){
+            carPrice = carTarget[i].color[j].price;
+          }  
+        }
+      }
+
+      // for every other car
+      else {
+          carPrice = carTarget[i].price;
+      }
     }
   }
-  
 
 
   return carPrice;
@@ -131,6 +146,7 @@ quiz.question_07 = function(data) {
 
   var maxPricedCar = {};
   // TODO your code here
+  
 
 
 
@@ -152,7 +168,7 @@ quiz.question_08 = function(data) {
 
   // TODO your code here
 
-  return data;
+  return data.cars.Honda;
 };
 
 // ----------------------------------------
