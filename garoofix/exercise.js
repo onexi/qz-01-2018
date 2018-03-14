@@ -113,7 +113,6 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   }else{
     carPrice = thisCar.price;
   }
-  //carPrice = thisCar.price;
   return carPrice;
 };
 
