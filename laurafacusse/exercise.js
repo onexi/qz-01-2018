@@ -1,3 +1,5 @@
+import { SIGKILL } from "constants";
+
 var quiz = {};
 
 // ---------------------------------------------------------------------
@@ -22,6 +24,7 @@ quiz.question_00 = function() {
   // ----------------------------------------
   var counter = 0;
   return 'Error: Question 01 not implemented';
+  return false; 
 };
 
 quiz.question_01 = function() {
@@ -30,6 +33,7 @@ quiz.question_01 = function() {
   //   Return a string that says "Hi!"
   // ----------------------------------------
   return 'Error: Question 01 not implemented';
+  document.write("Hi!");
 };
 
 quiz.question_02 = function() {
@@ -38,6 +42,8 @@ quiz.question_02 = function() {
   //   Return an array of objects
   // ----------------------------------------
   return 'Error: Question 02 not implemented';
+  var names = newArray("abel", "sabrina", "sam", "pushpita", "john");
+  var list = [5,8,9,11,20,22];
 };
 
 quiz.question_03 = function() {
@@ -48,6 +54,12 @@ quiz.question_03 = function() {
   //   a 'name' and 'age' property
   // ----------------------------------------
   return 'Error: Question 03 not implemented';
+  var students = [
+    {name: "sam", age: 20},
+    {name: "sabrina", age: 18},
+    {name: "pushpita", age: 16}
+  ];
+
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -57,6 +69,10 @@ quiz.question_04 = function(foo, bar) {
   //   each object property value must be a function
   // ----------------------------------------
   return 'Error: Question 04 not implemented';
+  //pushpita wrote ignore foo and bar
+var word = "hello bob";
+document.write(word.length);
+document.write(word.toUpperCase());
 };
 
 quiz.question_05 = function(someObject) {
@@ -66,6 +82,11 @@ quiz.question_05 = function(someObject) {
   //   Give 'age' any value you like.
   // ----------------------------------------
   return 'Error: Question 05 not implemented';
+  function someObject (name, age){
+    this.name = name;
+    this.age = age;
+  }
+  var laura = new someObject ("laura", 35); 
 };
 
 // ----------------------------------------
@@ -78,12 +99,23 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   // as arguments to this function.
   // Return the price.
   // ---------------------------------------------------------------
+  var carData= {
+    "cars": {
+        "Nissan": [
+            {"model":"Sentra", "doors":4, "price": 17000},
+            {"model":"Maxima", "doors":4,  "price": 18000},
+            {"model":"GTR", "doors":2,  "price": 210000},
+            {"model":"Altima", "doors":2,  "price": 23300},
+            {"model":"LEAF", "doors":2,  "price": 29900},
+            {"model":"Maxima", "doors":2,  "price": 33270},
+            {"model":"Versa", "doors":2,  "price": 12110},
+            {"model":"Juke", "doors":2,  "price": 20900}
+        ],
 
-  var carPrice = 0;
-  // TODO your code here
-
+ cars.forEach(function(item, index, array){
+   if (item === "Sentra")
   return carPrice;
-};
+}
 
 quiz.question_07 = function(data) {
   // ---------------------------------------------------------------
@@ -93,7 +125,16 @@ quiz.question_07 = function(data) {
   // ---------------------------------------------------------------
 
   var maxPricedCar = {};
-  // TODO your code here
+  function callback (data){
+    var newData = [];
+
+    
+  }
+  }
+
+  var maxPricedCar = carData.reduce(function(all,item,array){
+    if (item )
+  }
 
   return maxPricedCar;
 };
@@ -114,6 +155,19 @@ quiz.question_08 = function(data) {
 //   SECTION 03 - ARRAY FUNCTIONS
 // ----------------------------------------
 
+
+var skierData = [
+  { name: 'Clement', time: 48.58 },
+  { name: 'Henrik', time: 47.72 },
+  { name: 'Sebastian', time: 48.53 },
+  { name: 'Andre', time: 47.93 },
+  { name: 'Ted', time: 102.3 },
+  { name: 'Manfred', time: 48.4 },
+  { name: 'Alexis', time: 48.54 },
+  { name: 'Victor', time: 48.34 },
+];
+
+
 quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
   // We are provided ski racer results from the olympics.
@@ -127,11 +181,14 @@ quiz.question_09 = function(input) {
 
   var obj = {};
   input.forEach(function(/* TODO args */) {
-    // TODO your code here
+   skierData.forEach(function(item,index,array)};
+
+  console.log(index,item);
+  return obj 
+
+
+  // TODO your code here
     // add name as key, time as value
-  });
-  return obj;
-};
 
 quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
@@ -167,6 +224,7 @@ quiz.question_11 = function(input) {
 
   var res = input.reduce(
     function(/* TODO args */) {
+      
       // TODO your code here
     },
     0 /* TODO set correct starting value */,
@@ -180,8 +238,8 @@ quiz.question_12 = function(input) {
   // based on their race time in descending order.
   // Return an array of skier objects.
   //
-  // Example input: [{ name: 'Sue', time: 50.0 }, { name: 'Bob', time: 45.0 }]
-  // Example output: [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
+[{ name: 'Sue', time: 50.0 }, { name: 'Bob', time: 45.0 }]
+ [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
   // ---------------------------------------------------------------
 
   var compare = function(/* TODO args */) {
