@@ -91,14 +91,12 @@ quiz.question_06 = function(data, carName, model, doors, color) {
 
   var carPrice = 0;
 
+  // console.log(carData.cars.Nissan.length)
+  var models = data.cars[carName];
 
-	for(var counter=0; counter < data.cars.carName.length; counter++){
-    if (data.cars.carName[counter].model === model){
-      carPrice = data.cars.carName[counter].price
-    }
-	}
-  // console.log(data.carName.model);
-
+  if ((models[0].model == model)&&(models[0].doors === doors)&&(models[0].color[0].id === color)){
+    carPrice = data.cars[carName][0].color[0].price;
+  }
   return carPrice;
 };
 
@@ -109,26 +107,36 @@ quiz.question_07 = function(data) {
   // ex: '{ make: 'Tesla', model: 'Model S', doors: 4, price: 80000 }'
   // ---------------------------------------------------------------
   var MaxPrice = 0
-  var maxPricedCar = {};
+  var maxPricedCar = {};  
+  var types = data.cars;
 
-  for(var i=0; i < data.cars.length; i++){
-    for(var j=0; j < data.cars.carName.length; counter++){
-      if (data.car.i[j].price > MaxPrice){
-        maxPrice = data.cars.i[j].price
-        maxPricedCar = data.cars.i[j]
+  for (var i in types){
+    for(var j=0; j < types[i].length; j++){
+      if ((types[i][j].color === undefined)&&(types[i][j].price > MaxPrice)){
+        MaxPrice = types[i][j].price;
+        console.log(MaxPrice);
+        MaxPriceCar = types[i][j]
+        MaxPriceCar.make = i;
+        console.log(MaxPriceCar);
+        return maxPricedCar, MaxPrice;
+      }
+      // console.log(maxPrice);
+
+      if (types[i][j].color !== undefined){
+
+        for(var k=0; k < types[i][j].color.length; k++){
+          if (types[i][j].color[k].price > MaxPrice){
+            MaxPrice = types[i][j].color[k].price
+            MaxPriceCar = types[i][j].color[k]
+            MaxPriceCar.make = i;
+            MaxPriceCar.model = types[i][j].model;
+            return maxPricedCar, MaxPrice;
+          }
+        }
       }
     }
-
-// 	for(var i=0; i < data.length; i++){
-//     for(var j=0; i < i.length; j++){
-
-
-// 		console.log(counter);
-// }
-
-// 		return (Number(item.salary) > 100000));
-	// }
-
+  }
+  // console.log(maxPricedCar);
   return maxPricedCar;
 };
 
@@ -140,11 +148,14 @@ quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
 
   // TODO your code here
-  // var honda = data.cars.Honda = []
-
-  // honda[0].model = 'Civic';
-  // console.log(data.honda[0].model);
-  // return data;
+  var honda = data.cars.Honda = []
+  // console.log(data);
+  honda[0] = {};
+  honda[0].model = "Civic";
+  honda[0].doors = 4;
+  honda[0].price = 18840;
+  // console.log(honda);
+  return honda;
 };
 
 // ----------------------------------------
@@ -163,14 +174,17 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(someArray) {
-    var name = someArray[0].name;
-    var time = someArray[0].time;
+  
+  function add(item, counter, array){
+    var name = item.name
+    var time = item.time
+    obj[name] = time
+  };
 
-    obj.name = name;
-    obj.time = time;
-  });
+  input.forEach(add) 
+
   return obj;
+
 };
 
 quiz.question_10 = function(input) {
@@ -184,13 +198,11 @@ quiz.question_10 = function(input) {
   // Example output: ['Bob']
   // ---------------------------------------------------------------
 
-    var res = input.filter(function(item, counter, array) {
-      var outputArray = []
-      if (item[counter].time < 48.5) outputArray.push(item[counter])
-      return (outputArray)
+    var res = input.filter(function(item) {
+      return (item.time < 48.5) 
     })
-    var outputRes = res.map(function(item, counter) {
-      return item[counter].name;
+    var outputRes = res.map(function(item) {
+      return item.name;
     });
   return outputRes;
 
@@ -210,7 +222,12 @@ quiz.question_11 = function(input) {
 
   var res = input.reduce(
     function(previous, current){
+      if (previous === ''){
+        previous = previous+current;
+      }
+      else{
       previous = previous+', '+current;
+      }
       return previous;
     },'');
   
