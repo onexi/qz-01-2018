@@ -56,7 +56,10 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return {};
+  a = function(a,b){
+    return a+b
+  }
+  return {sum:a};
 };
 
 quiz.question_05 = function(someObject) {
@@ -80,6 +83,17 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   // ---------------------------------------------------------------
 
   var carPrice = 0;
+  var len = carData.cars.length;
+  for (var i = 0; i < len;i++){
+    if (i ==carName){
+      for(var obj in i){
+        if (obj.model === model && obj.doors == doors && obj.color == color){
+          carPrice = obj.price
+        }
+      }
+    }
+   
+  }
   
 
   return carPrice;
@@ -93,6 +107,19 @@ quiz.question_07 = function(data) {
   // ---------------------------------------------------------------
 
   var maxPricedCar = {};
+  var sum = 0;
+  var len = carData.cars.length;
+  for (var i = 0; i < len;i++){
+    for (var obj in i){
+      if(obj.price > sum){
+        sum = obj.price
+        maxPricedcar = obj
+      }
+    }
+  
+  }
+
+
   // TODO your code here
 
   return maxPricedCar;
@@ -106,6 +133,9 @@ quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
 
   // TODO your code here
+  var newjson = {"model":"Juke", "doors":2,  "price": 20900};
+  data.cars.push('Honda')
+  data.cars.Honda.push(JSON.parse(newjson));
 
   return data;
 };
