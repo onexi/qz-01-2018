@@ -168,7 +168,7 @@ quiz.question_08 = function(data) {
 
   // TODO your code here
 
-  return data.cars.Honda;
+  return data;
 };
 
 // ----------------------------------------
