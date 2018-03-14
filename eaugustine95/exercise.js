@@ -21,7 +21,7 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return False;
 };
 
 quiz.question_01 = function() {
@@ -29,7 +29,7 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return "Hi!";
 };
 
 quiz.question_02 = function() {
@@ -37,7 +37,12 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  var a=12
+  var b=13
+  var g=15
+  
+  
+  return [a,b,g];
 };
 
 quiz.question_03 = function() {
@@ -47,7 +52,8 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  return [{name: "James",age:"23"},
+          {name: "Larry",age:"15"}];
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,16 +62,23 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  return {Falsestate:function(){
+    return False}, 
+          Truestate:function(){
+            return True
+          }};
 };
 
 quiz.question_05 = function(someObject) {
+  var someObject={age:21}
+  
+  
   // ----------------------------------------
   //   QUESTION 05
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+  return someObject.age;
 };
 
 // ----------------------------------------
