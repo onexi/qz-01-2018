@@ -243,11 +243,11 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
-      // TODO your code here
+    .filter(function(skier) {
+      return (skier.time < 48.5);
     })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .map(function(skier) {
+      return skier.name;
     });
   return res;
 };
