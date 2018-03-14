@@ -198,7 +198,7 @@ quiz.question_10 = function(input) {
       // TODO your code here
     })
     .map(function(skier) {
-      return JSON.stringify(skier.name)
+      return skier.name
     });
 
   // var res = quiz.question_09(input);
