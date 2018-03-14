@@ -21,7 +21,7 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return false;
 };
 
 quiz.question_01 = function() {
@@ -29,7 +29,7 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return "Hi!";
 };
 
 quiz.question_02 = function() {
@@ -37,7 +37,11 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  var arrayOfObjects = [{'foo':'bar'},
+                        {'name':'raj'},
+                        {'classCode':'1.001'}
+                       ];
+  return arrayOfObjects;
 };
 
 quiz.question_03 = function() {
@@ -47,7 +51,11 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  var arrayOfObjects = [{'name':'Raj','age':26},
+                        {'name':'sri','age':25},
+                        {'name':'kiddo','age':1}
+  ]
+  return arrayOfObjects;
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,6 +64,16 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
+  //ToDo: Check if value or both is function
+  var function1 = function() {
+    return "I am function 1";
+  }
+  var function2 = function() {
+    return "I am function 2";
+  }
+  var objectTOreturn = {'function1':function1,
+                        'function2':function2
+                       }
   return 'Error: Question 04 not implemented';
 };
 
@@ -65,7 +83,8 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+  var ageToAdd = 40;
+  someObject.age = ageToAdd;
 };
 
 // ----------------------------------------
@@ -81,8 +100,73 @@ quiz.question_06 = function(data, carName, model, doors, color) {
 
   var carPrice = 0;
   // TODO your code here
+  var carData= {
+    "cars": {
+        "Nissan": [
+            {"model":"Sentra", "doors":4, "price": 17000},
+            {"model":"Maxima", "doors":4,  "price": 18000},
+            {"model":"GTR", "doors":2,  "price": 210000},
+            {"model":"Altima", "doors":2,  "price": 23300},
+            {"model":"LEAF", "doors":2,  "price": 29900},
+            {"model":"Maxima", "doors":2,  "price": 33270},
+            {"model":"Versa", "doors":2,  "price": 12110},
+            {"model":"Juke", "doors":2,  "price": 20900}
+        ],
+        "Ford": [
+            {"model":"Taurus", "doors":4, "price": 21000},
+            {"model":"Escort", "doors":4,  "price": 22000},
+            {"model":"Expedition", "doors":4,  "price": 64447},
+            {"model":"Fusion", "doors":4,  "price": 24000},
+            {"model":"Fiesta ", "doors":4,  "price": 13995},
+            {"model":"EcoSport ", "doors":4,  "price": 20995},
+            {"model":"Edge ", "doors":4,  "price": 30215},
+            {"model":"Explorer ", "doors":4,  "price": 32985}
+        ],
+        "BMW": [
+            {"model":"series 3", "doors":4, 
+                "color":[ 
+                {"id":"red", "price": 35000 },
+                {"id":"silver", "price": 40000 }]
+            }
+        ]
+      }
+    }
+    var modelsArray = data[carName];
+    var filterModel = function(element, i, array) {
+      return element.model == model;
+    }
+    var specificModels = modelsArray.filter(filterModel)
+    if (specificModels.length == 0) {
+      return null; // to model for this behavior in caller
+    }
 
-  return carPrice;
+    var doorFilteredModels = specificModels.filter(filterByDoors);
+
+    var priceOfColor = null;
+    var getPricebyColor = function(element, i, array) {
+      if (element.id == color) {
+        priceOfColor = element.price;
+      }
+    }
+
+    // FIlter by colors if BMW
+    if (carName == 'BMW') {
+      var price = doorFilteredModels.color.forEach(getPricebyColor)
+    }
+
+    if (priceOfColor) {
+      return priceOfColor
+    }
+    else {
+      console.log('The given color was not found');
+    }
+    
+    return null; // if it reaches here for return, it's an unhandled case
+    // ---------------------------------------------------------------
+    // Find the price of the car whose name, model, and doors are provided
+    // as arguments to this function.
+    // Return the price.
+    // ---------------------------------------------------------------
 };
 
 quiz.question_07 = function(data) {
