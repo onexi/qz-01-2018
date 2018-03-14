@@ -24,6 +24,11 @@ console.log(q5);
 // ----------------------------------------
 //   OBJECTS
 // ----------------------------------------
+// carData.cars.BMW[0].color[0].price
+// Add a new car object to the given cardata object, "Honda", to the data set with
+  // model: "Civic", doors: 4, price: 18840
+  // Return the updated data
+
 
 var carData= {
     "cars": {
