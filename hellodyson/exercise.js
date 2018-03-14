@@ -14,65 +14,65 @@ var quiz = {};
 //   SECTION 01 - BASICS
 // ----------------------------------------
 
-quiz.question_00 = function() {
+quiz.question_00 = function () {
   // ----------------------------------------
   //   QUESTION 00
   //   Is "counter" a global variable?
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return 'false';
 };
 
-quiz.question_01 = function() {
+quiz.question_01 = function () {
   // ----------------------------------------
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return 'Hi!';
 };
 
-quiz.question_02 = function() {
+quiz.question_02 = function () {
   // ----------------------------------------
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  return [{ obj1: "ola" }, { obj2: "nihao" }, { obj3: "hello" }];
 };
 
-quiz.question_03 = function() {
+quiz.question_03 = function () {
   // ----------------------------------------
   //   QUESTION 03
   //   Return an array of objects.
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  return [{ name: "John", age: 18 }, { name: "Liz", age: 18 }, { name: "Fiz", age: 18 }];
 };
 
-quiz.question_04 = function(foo, bar) {
+quiz.question_04 = function (foo, bar) {
   // ----------------------------------------
   //   QUESTION 04
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  return { foo: function () { console.log("function1") }, bar: function () { console.log("function2") } };
 };
 
-quiz.question_05 = function(someObject) {
+quiz.question_05 = function (someObject) {
   // ----------------------------------------
   //   QUESTION 05
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+  someObject.age = 18;
 };
 
 // ----------------------------------------
 //   SECTION 02 - OBJECTS
 // ----------------------------------------
 
-quiz.question_06 = function(data, carName, model, doors, color) {
+quiz.question_06 = function (data, carName, model, doors, color) {
   // ---------------------------------------------------------------
   // Find the price of the car whose name, model, and doors are provided
   // as arguments to this function.
@@ -85,7 +85,7 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   return carPrice;
 };
 
-quiz.question_07 = function(data) {
+quiz.question_07 = function (data) {
   // ---------------------------------------------------------------
   // Find the maximum priced car from the data given in cardata variable
   // Return an object with properties: make, model, doors, price
@@ -98,7 +98,7 @@ quiz.question_07 = function(data) {
   return maxPricedCar;
 };
 
-quiz.question_08 = function(data) {
+quiz.question_08 = function (data) {
   // ---------------------------------------------------------------
   // Add a new car object to the given cardata object, "Honda", to the data set with
   // model: "Civic", doors: 4, price: 18840
@@ -114,7 +114,7 @@ quiz.question_08 = function(data) {
 //   SECTION 03 - ARRAY FUNCTIONS
 // ----------------------------------------
 
-quiz.question_09 = function(input) {
+quiz.question_09 = function (input) {
   // ---------------------------------------------------------------
   // We are provided ski racer results from the olympics.
   // The input is an array of skier objects with name and time properties.
@@ -126,14 +126,14 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
+  input.forEach(function (/* TODO args */) {
     // TODO your code here
     // add name as key, time as value
   });
   return obj;
 };
 
-quiz.question_10 = function(input) {
+quiz.question_10 = function (input) {
   // ---------------------------------------------------------------
   // The input is an array of skier objects with name and time properties.
   // However, we are only interested in names of skiers with a time less than 48.5.
@@ -145,16 +145,16 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
+    .filter(function (/* TODO args */) {
       // TODO your code here
     })
-    .map(function(/* TODO args */) {
+    .map(function (/* TODO args */) {
       // TODO your code here
     });
   return res;
 };
 
-quiz.question_11 = function(input) {
+quiz.question_11 = function (input) {
   // ---------------------------------------------------------------
   // The input is now the array of skier names whose times are less than 48.5.
   // We want to convert the array of names into a string of names
@@ -166,7 +166,7 @@ quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input.reduce(
-    function(/* TODO args */) {
+    function (/* TODO args */) {
       // TODO your code here
     },
     0 /* TODO set correct starting value */,
@@ -174,7 +174,7 @@ quiz.question_11 = function(input) {
   return res;
 };
 
-quiz.question_12 = function(input) {
+quiz.question_12 = function (input) {
   // ---------------------------------------------------------------
   // Write a sort callback function to sort the skier objects
   // based on their race time in descending order.
@@ -184,7 +184,7 @@ quiz.question_12 = function(input) {
   // Example output: [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
   // ---------------------------------------------------------------
 
-  var compare = function(/* TODO args */) {
+  var compare = function (/* TODO args */) {
     // TODO your code here
   };
   return input.sort(compare);
