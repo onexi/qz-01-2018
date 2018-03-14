@@ -204,7 +204,7 @@ quiz.question_08 = function(data) {
   // Return the updated data
   // ---------------------------------------------------------------
 
-  // TODO your code here
+  data.cars['Honda'] = [{model:'Civic', doors:4, price:18840},];
 
   return data;
 };
