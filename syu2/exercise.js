@@ -21,6 +21,7 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
+  console.log('false')
   return 'Error: Question 01 not implemented';
 };
 
@@ -29,7 +30,8 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  console.log('Hi!')
+  //return 'Error: Question 01 not implemented';
 };
 
 quiz.question_02 = function() {
@@ -37,6 +39,7 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
+  return [{},{},{}]
   return 'Error: Question 02 not implemented';
 };
 
@@ -47,6 +50,7 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
+  return [{name:null, age:null},{name:null, age:null},{name:null, age:null}]
   return 'Error: Question 03 not implemented';
 };
 
@@ -65,6 +69,9 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
+  var a = {}
+  a.age = '25'
+  return a
   return 'Error: Question 05 not implemented';
 };
 
@@ -80,8 +87,12 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   // ---------------------------------------------------------------
 
   var carPrice = 0;
-  // TODO your code here
+  // TODO your code here 
 
+  for (i=0;i<2;i++){
+  if(data.cars[carName][i][model] === model && data.cars[carName][i][doors] === model){
+    carPrice = data.carName['carName'][i][price];
+  }};
   return carPrice;
 };
 
@@ -94,6 +105,18 @@ quiz.question_07 = function(data) {
 
   var maxPricedCar = {};
   // TODO your code here
+  var Nprices = [];
+  data.cars.Nissan.forEach( array => Nprices.push(array.price) );
+
+  var Fprices = [];
+  data.cars.Ford.forEach( array => Fprices.push(array.price) );
+
+  var Bprices = [];
+  data.cars.BMW[0].color.forEach( array => Bprices.push(array.price) );
+
+  var maxPrices = [Math.max(...Nprices), Math.max(...Fprices), Math.max(...Bprices)]
+
+  console.log(Math.max(...maxPrices))
 
   return maxPricedCar;
 };
@@ -106,7 +129,7 @@ quiz.question_08 = function(data) {
   // ---------------------------------------------------------------
 
   // TODO your code here
-
+  data.cars.Honda = {'model':'Civic', 'doors': 4, 'price': 18840};
   return data;
 };
 
@@ -126,10 +149,10 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
-    // TODO your code here
-    // add name as key, time as value
-  });
+
+  var call = input => obj[input.name] = input.time
+  input.forEach(call)
+
   return obj;
 };
 
@@ -145,13 +168,14 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
-      // TODO your code here
-    })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .filter( element => element.time < 48.5 )
+    .map(function(element) {
+      var names = [];
+      names.push(element.name);
+      return names;
     });
   return res;
+
 };
 
 quiz.question_11 = function(input) {
@@ -165,12 +189,10 @@ quiz.question_11 = function(input) {
   // Eample output: 'Bob, Sue'
   // ---------------------------------------------------------------
 
-  var res = input.reduce(
-    function(/* TODO args */) {
-      // TODO your code here
-    },
-    0 /* TODO set correct starting value */,
-  );
+  var res = input.reduce( (acc, cur) => acc + ', ' + cur,
+    input[0].name
+    );
+    res.shift();
   return res;
 };
 
