@@ -17,8 +17,11 @@ console.log(q3);
 
 var q4 = quiz.question_04();
 console.log(q4);
+//q4.func1();
+//q4.func2(); 
 
-var q5 = quiz.question_05();
+var someObj = {};
+var q5 = quiz.question_05(someObj);
 console.log(q5);
 
 // ----------------------------------------
