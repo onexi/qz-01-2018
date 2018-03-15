@@ -18,7 +18,9 @@ console.log(q3);
 var q4 = quiz.question_04();
 console.log(q4);
 
-var q5 = quiz.question_05();
+var q5 = quiz.question_05({
+  name:"Michael A. Shaw",
+});
 console.log(q5);
 
 // ----------------------------------------
@@ -49,8 +51,8 @@ var carData= {
         ],
 
         "BMW": [
-            {"model":"series 3", "doors":4, 
-                "color":[ 
+            {"model":"series 3", "doors":4,
+                "color":[
                 {"id":"red", "price": 35000 },
                 {"id":"silver", "price": 40000 }]
             }
@@ -58,8 +60,12 @@ var carData= {
     }
 };
 
+try {
 var q6 = quiz.question_06(carData, 'BMW', 'series 3', 4 , 'red');
 console.log(q6);
+}catch(error){
+  console.log(error);
+}
 
 var q7 = quiz.question_07(carData);
 console.log(q7);

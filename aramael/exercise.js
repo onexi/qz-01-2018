@@ -21,7 +21,7 @@ quiz.question_00 = function() {
   //   Return true or false.
   // ----------------------------------------
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return false;
 };
 
 quiz.question_01 = function() {
@@ -29,7 +29,7 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return 'Hi!';
 };
 
 quiz.question_02 = function() {
@@ -37,7 +37,11 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  return [{index:0},
+    {index:1},
+    {index:2},
+    {index:3},
+    {index:4}];
 };
 
 quiz.question_03 = function() {
@@ -47,7 +51,23 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  return [
+    {
+      name:"Nancy B. Baker",
+      age: 30
+    },{
+      name:"Phyllis B. Hedges",
+      age: 73
+    },{
+      name:"Melanie L. Watson",
+      age: 52
+    },{
+      name:"Kevin R. Kelley",
+      age: 38
+    },{
+      name:"Harry B. Levan",
+      age: 49
+    },];
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,7 +76,17 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  return {
+    foo: function (){
+      return "foo";
+    },
+    bar: function (){
+      return "bar";
+    },
+    buzz: function (){
+      return "buzz";
+    }
+  };
 };
 
 quiz.question_05 = function(someObject) {
@@ -65,7 +95,9 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+
+  someObject.age = 38;  // set property `age` to 38
+  return someObject;
 };
 
 // ----------------------------------------
@@ -80,7 +112,39 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   // ---------------------------------------------------------------
 
   var carPrice = 0;
-  // TODO your code here
+
+  // Check Car Name Exists
+  if (!(carName in data.cars) || (typeof data.cars[carName] == 'undefined')){
+    throw new Error(`No car name exists with name '${carName}'.`);
+  }else {
+    // Find All Matching Models
+    let matchingModels = data.cars[carName].filter(datum => (datum.model == model));
+    if (matchingModels.length == 0){
+      throw new Error(`No model exists with model '${model}' and name'${carName}'.`);
+    }else {
+      // Find All Matching Doors
+      let matchingDoors = matchingModels.filter(datum => (datum.doors == doors));
+      if (matchingDoors.length == 0){
+        throw new Error(`No model exists with ${doors} doors and model '${model}' and name'${carName}'.`);
+      }else {
+        // No Color Options Asked For
+        if (typeof color === 'undefined' || color === null) {
+          carPrice = matchingDoors[0].price;
+        }else {
+          if (!("color" in matchingDoors[0]) || (typeof matchingDoors[0].color == 'undefined')){
+            throw new Error(`No color options exist for ${doors} doors and model '${model}' and name'${carName}'.`);
+          }else {
+            let matchingColors = matchingDoors[0].color.filter(datum => (datum.id == color));
+            if (matchingColors.length == 0){
+              throw new Error(`No model exists with color '${color}' and ${doors} doors and model '${model}' and name'${carName}'.`);
+            }else{
+              carPrice = matchingColors[0].price;
+            }
+          }
+        }
+      }
+    }
+  }
 
   return carPrice;
 };
@@ -92,8 +156,41 @@ quiz.question_07 = function(data) {
   // ex: '{ make: 'Tesla', model: 'Model S', doors: 4, price: 80000 }'
   // ---------------------------------------------------------------
 
-  var maxPricedCar = {};
-  // TODO your code here
+  var maxPricedCar = {price:0,};
+
+  Object.keys(data.cars).forEach(cars =>{
+    let carName = cars;
+    cars = data.cars[cars];
+    cars.forEach(car =>{
+      // Check if Price is on Element
+      if (!('price' in car) || (typeof car.price == 'undefined')){
+        if (!('color' in car) || (typeof car.color == 'undefined')){
+          throw new Error(`Neither 'color' nor 'price' keys are set, unable to ensure maximum price properly. Please verify data format.`);
+        }else{
+          car.color.forEach(color =>{
+            if (color.price > maxPricedCar.price){
+              maxPricedCar = {
+                make: car.make,
+                model: car.model,
+                doors: car.doors,
+                price: car.price
+              };
+            }
+          });
+        }
+      }else{
+        // Price is on Root Element
+        if (car.price > maxPricedCar.price){
+          maxPricedCar = {
+            make: carName,
+            model: car.model,
+            doors: car.doors,
+            price: car.price
+          };
+        }
+      }
+    })
+  });
 
   return maxPricedCar;
 };
@@ -105,7 +202,7 @@ quiz.question_08 = function(data) {
   // Return the updated data
   // ---------------------------------------------------------------
 
-  // TODO your code here
+  data.cars['Honda'] = [{model:'Civic', doors:4, price:18840},];
 
   return data;
 };
@@ -126,9 +223,8 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
-    // TODO your code here
-    // add name as key, time as value
+  input.forEach(function(skier) {
+    obj[skier.name] = skier.time;
   });
   return obj;
 };
@@ -145,11 +241,11 @@ quiz.question_10 = function(input) {
   // ---------------------------------------------------------------
 
   var res = input
-    .filter(function(/* TODO args */) {
-      // TODO your code here
+    .filter(function(skier) {
+      return (skier.time < 48.5);
     })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+    .map(function(skier) {
+      return skier.name;
     });
   return res;
 };
@@ -165,12 +261,17 @@ quiz.question_11 = function(input) {
   // Eample output: 'Bob, Sue'
   // ---------------------------------------------------------------
 
+  // A Faster Implementation if usage of reduce is not required.
+  // return input.join(', ');
+
   var res = input.reduce(
-    function(/* TODO args */) {
-      // TODO your code here
+    function(acc, curr) {
+      acc += curr + ', ';
+      return acc;
     },
-    0 /* TODO set correct starting value */,
-  );
+    '');
+
+  res = res.substring(0, res.length - 2);
   return res;
 };
 
@@ -184,8 +285,8 @@ quiz.question_12 = function(input) {
   // Example output: [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
   // ---------------------------------------------------------------
 
-  var compare = function(/* TODO args */) {
-    // TODO your code here
+  var compare = function(a,b) {
+    return a.time - b.time;
   };
   return input.sort(compare);
 };
