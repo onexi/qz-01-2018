@@ -20,8 +20,11 @@ quiz.question_00 = function() {
   //   Is "counter" a global variable?
   //   Return true or false.
   // ----------------------------------------
+  
   var counter = 0;
-  return 'Error: Question 01 not implemented';
+  return false;
+
+  //return 'Error: Question 01 not implemented';
 };
 
 quiz.question_01 = function() {
@@ -29,7 +32,9 @@ quiz.question_01 = function() {
   //   QUESTION 01
   //   Return a string that says "Hi!"
   // ----------------------------------------
-  return 'Error: Question 01 not implemented';
+  return "Hi!";
+  
+  //return 'Error: Question 01 not implemented';
 };
 
 quiz.question_02 = function() {
@@ -37,7 +42,11 @@ quiz.question_02 = function() {
   //   QUESTION 02
   //   Return an array of objects
   // ----------------------------------------
-  return 'Error: Question 02 not implemented';
+  
+  var sports = [{name : "softball"}, {name: "basketball"}, {name: "volleyball"}];
+  return sports;
+
+  //return 'Error: Question 02 not implemented';
 };
 
 quiz.question_03 = function() {
@@ -47,7 +56,12 @@ quiz.question_03 = function() {
   //   Each object needs to have
   //   a 'name' and 'age' property
   // ----------------------------------------
-  return 'Error: Question 03 not implemented';
+  var students = [{firstName:"Deanna", age:22}, {firstName:"Kathy", age:24},
+  {firstName:"Chelsea", age:21},];
+  console.log('question 3: ' + students);
+  return students;
+
+  //return 'Error: Question 03 not implemented';
 };
 
 quiz.question_04 = function(foo, bar) {
@@ -56,7 +70,16 @@ quiz.question_04 = function(foo, bar) {
   //   Return an object,
   //   each object property value must be a function
   // ----------------------------------------
-  return 'Error: Question 04 not implemented';
+  
+  function nameFunction(name) {
+    return name;
+  }
+  function ageFunction(age) {
+    return age;
+  }
+  var student = {firstName:nameFunction(), age: ageFunction()};
+  
+  //return 'Error: Question 04 not implemented';
 };
 
 quiz.question_05 = function(someObject) {
@@ -65,7 +88,10 @@ quiz.question_05 = function(someObject) {
   //   Add the property 'age' to someObject
   //   Give 'age' any value you like.
   // ----------------------------------------
-  return 'Error: Question 05 not implemented';
+  someObject = {};
+  return someObject.age = '22';
+  
+  //return 'Error: Question 05 not implemented';
 };
 
 // ----------------------------------------
@@ -80,9 +106,10 @@ quiz.question_06 = function(data, carName, model, doors, color) {
   // ---------------------------------------------------------------
 
   var carPrice = 0;
-  // TODO your code here
+  carPrice += Number(JSON.stringify(data.cars.BMW[0].color[0].price));
 
   return carPrice;
+  
 };
 
 quiz.question_07 = function(data) {
@@ -92,9 +119,7 @@ quiz.question_07 = function(data) {
   // ex: '{ make: 'Tesla', model: 'Model S', doors: 4, price: 80000 }'
   // ---------------------------------------------------------------
 
-  var maxPricedCar = {};
-  // TODO your code here
-
+  var maxPricedCar = Math.max(carData.price);
   return maxPricedCar;
 };
 
@@ -103,16 +128,19 @@ quiz.question_08 = function(data) {
   // Add a new car object to the given cardata object, "Honda", to the data set with
   // model: "Civic", doors: 4, price: 18840
   // Return the updated data
-  // ---------------------------------------------------------------
+  // -------------------------------------------------------------
 
-  // TODO your code here
+  data.cars["Honda"] = {"model": "civic", "doors": 4, "price": 18840};
 
   return data;
+
 };
 
-// ----------------------------------------
-//   SECTION 03 - ARRAY FUNCTIONS
-// ----------------------------------------
+
+
+  // ----------------------------------------
+  //   SECTION 03 - ARRAY FUNCTIONS
+  // ----------------------------------------
 
 quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
@@ -126,9 +154,9 @@ quiz.question_09 = function(input) {
   // ---------------------------------------------------------------
 
   var obj = {};
-  input.forEach(function(/* TODO args */) {
-    // TODO your code here
-    // add name as key, time as value
+  input.forEach(function(name,time) {
+    obj.skierName = name;
+    obj.skierValue = time;
   });
   return obj;
 };
@@ -144,15 +172,17 @@ quiz.question_10 = function(input) {
   // Example output: ['Bob']
   // ---------------------------------------------------------------
 
-  var res = input
-    .filter(function(/* TODO args */) {
-      // TODO your code here
-    })
-    .map(function(/* TODO args */) {
-      // TODO your code here
+ var filterArray = input
+  console.log(filterArray);
+    var filtered = filterArray.filter(function(element) {
+      return Number(element.time) < 48.5
     });
-  return res;
-};
+    console.log(JSON.stringify(filtered[0].name));
+    var mapped = filtered.map(function(element) {
+      element.name;
+    });
+  return filterArray;
+  };
 
 quiz.question_11 = function(input) {
   // ---------------------------------------------------------------
@@ -184,7 +214,7 @@ quiz.question_12 = function(input) {
   // Example output: [{ name: 'Bob', time: 45.0 }, { name: 'Sue', time: 50.0 }]
   // ---------------------------------------------------------------
 
-  var compare = function(/* TODO args */) {
+  var compare = function(a,b) {
     // TODO your code here
   };
   return input.sort(compare);
